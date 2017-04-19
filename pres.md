@@ -2,19 +2,19 @@
 # ![Elixir](logo.png)
 ### Gaute Magnussen
 ### gaute.magnussen@webstep.no
+<!-- slide -->
+# ![Elixir](logo.png)
+  > Elixir is a functional, concurrent, general-purpose programming language that runs on the Erlang virtual machine (BEAM). Elixir builds on top of Erlang and shares the same abstractions for building distributed, fault-tolerant applications. Elixir also provides a productive tooling and an extensible design. The latter is supported by compile-time metaprogramming with macros and polymorphism via protocols.
+<!-- slide -->
+# ![Erlang](erlang.png)
+> Erlang (/ˈɜːrlæŋ/ er-lang) is a general-purpose, concurrent, functional programming language, as well as a garbage-collected runtime system.
 
+>The term Erlang is used interchangeably with Erlang/OTP, or OTP, which consists of the Erlang runtime system, a number of ready-to-use components mainly written in Erlang, and a set of design principles for Erlang programs.
 <!-- slide -->
 # ![Erlang](erlang.png)
-  fault tolerant, concurrent, distributed
-<!-- slide -->
-# ![Erlang](erlang.png)
-- Erlang - funksjonelt språk
+- Erlang - språk
 - OTP - Sett med biblioteker og design patterns
 - BEAM - Erlang Virtual Machine
-<!-- slide -->
-# ![Erlang](erlang.png)
-  lightweight processes. med egen heap, stack, gc, mailbox. ikke os-thread. ca 5kb overhead.
-  soft realtime
 <!-- slide -->
 # ![Erlang](erlang.png)
   - laget av Ericsson i 1986
@@ -26,6 +26,7 @@
 
 <!-- slide -->
 # ![Elixir](logo.png)
+
   - enkel syntax. lett å lære func programming
   - tre mål med elixir: compability, productivity, extensibility
    http://elixir-lang.org/blog/2013/08/08/elixir-design-goals/
@@ -91,7 +92,27 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
 
 <!-- slide -->
 # Pattern matching
+```elixir
+ x = 1
+ 1 = 1
+ 2 = 1 # ** (MatchError) no match of right hand side value: 1
+ [x,y] = [1, 2]
+ [head | tail] = [1,2,3,4,5]
+ {a, b, c} = {:hello, "world", 42}
 
+ {:ok, result} = {:ok, 13}
+```
+
+<!-- slide -->
+# Pattern matching
+```elixir
+ defmodule Fibonacci do
+   def fib(0), do: 0
+   def fib(1), do: 1
+   def fib(n), do: fib(n-1) + fib(n-2)
+ end
+
+```
 <!-- slide -->
 # Processes
 ### Not os-thread
@@ -109,6 +130,10 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
       spawn(fn -> :ok end)
     end
 ```
+<!-- slide -->
+# Processes
+### isolation
+per process GC, heap, stack,
 <!-- slide -->
 # Processes
 ### message passing
