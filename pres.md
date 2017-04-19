@@ -19,10 +19,8 @@
 # ![Erlang](erlang.png)
   - laget av Ericsson i 1986, open source 1998
   - Kjører på halvparten av alle mobilswitcher i verden.
-<!-- slide -->
-# ![Erlang](erlang.png)
-  brukes av facebook, amazon, heroku, riak, whatsapp
-  whatsapp har 2 millioner devices koblet til hver server
+  - brukes av facebook, amazon, heroku, riak, whatsapp
+  - whatsapp har 2 millioner devices koblet til hver server
 
 <!-- slide -->
 # ![Erlang](erlang.png)
@@ -189,9 +187,26 @@ send(pid, "hello")
   - patterns på topp av erlang.
 
 <!-- slide -->
-# Hot reload in agent
- - https://github.com/conradwt/blabber-using-elixir/blob/master/README.md
+# Hot code swap
+ ```elixir
+ defmodule Blabber do
+   def start do
+     spawn( __MODULE__, :loop, [1] )
+   end
 
+   def loop( count ) do
+     receive do
+       :done -> IO.puts( "Closing" )
+               :ok
+     after
+       2000 -> IO.puts( "Loop #{node()} with #{count} says hello" )
+               Blabber.loop( count + 1 )
+     end
+   end
+ end
+ ```
+>c("blabber.ex")
+>pid = Blabber.start
  <!-- slide -->
  # Interop
 ```elixir
