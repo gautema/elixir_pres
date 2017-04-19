@@ -17,7 +17,7 @@
 - BEAM - Erlang Virtual Machine
 <!-- slide -->
 # ![Erlang](erlang.png)
-  - laget av Ericsson i 1986
+  - laget av Ericsson i 1986, open source 1998
   - Kjører på halvparten av alle mobilswitcher i verden.
 <!-- slide -->
 # ![Erlang](erlang.png)
@@ -25,9 +25,19 @@
   whatsapp har 2 millioner devices koblet til hver server
 
 <!-- slide -->
-# ![Elixir](logo.png)
+# ![Erlang](erlang.png)
+\+
+  Ekstremt stabilt (99.9999999% oppetid er målt)
+  Skalerer godt horisontalt
+  Tåler en stor mengde long running connections
+  Soft realtime
+\-
+ Merkelig syntaks
+ Mye boilerplatekode
+ Mangler muligheter fra moderne språk
 
-  - enkel syntax. lett å lære func programming
+<!-- slide -->
+# ![Elixir](logo.png)
   - tre mål med elixir: compability, productivity, extensibility
    http://elixir-lang.org/blog/2013/08/08/elixir-design-goals/
 
@@ -181,6 +191,19 @@ send(pid, "hello")
 <!-- slide -->
 # Hot reload in agent
  - https://github.com/conradwt/blabber-using-elixir/blob/master/README.md
+
+ <!-- slide -->
+ # Interop
+```elixir
+:crypto.hash(:sha256, "hash this")
+```
+ <!-- slide -->
+ # Tooling
+ - Iex
+ - Mix
+ - Hex
+ - ExUnit
+
 
  <!-- slide -->
  # Phoenix og Ecto
