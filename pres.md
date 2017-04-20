@@ -25,7 +25,7 @@
 <!-- slide -->
 # ![Erlang](erlang.png)
 \+
-  Ekstremt stabilt (99.9999999% oppetid er målt)
+  Ekstremt stabilt
   Skalerer godt horisontalt
   Tåler en stor mengde long running connections
   Soft realtime
@@ -46,7 +46,7 @@
 Dave Thomas, GOTO 2014
 
 <!-- slide -->
-# Datatyper
+# ![Elixir](elixir.png) Datatyper
 ```elixir
 123 # integer
 0x1F # integer
@@ -54,15 +54,15 @@ Dave Thomas, GOTO 2014
 "Hello world" # string
 :hello # atom
 [1,2,"hello"] # list
-{:ok, 3} # tuple
-%{name: "Gaute", age: 35}
-%Person{name: "Gaute", age: 35}
+{:ok, 3, "hei"} # tuple
+%{name: "Gaute", age: 35} # map
+%Person{name: "Gaute", age: 35} # struct
 fn(x) -> x * x end # function
 ```
 
 
 <!-- slide -->
-# Syntaks
+#  ![Elixir](elixir.png) Syntaks
 ```elixir
 defmodule Hello do
   def world do
@@ -79,7 +79,7 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
 ```
 
 <!-- slide -->
-# Immutable
+#  ![Elixir](elixir.png) Immutable
   ```elixir
   iex(2)> x = [1,2,3]
   [1, 2, 3]
@@ -90,7 +90,7 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
   ```
 
 <!-- slide -->
-# Arrow
+#  ![Elixir](elixir.png) Arrow
   ```elixir
     1..110
     |> Enum.map(&(&1 * &1))
@@ -99,7 +99,7 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
   ```
 
 <!-- slide -->
-# Pattern matching
+#  ![Elixir](elixir.png) Pattern matching
 ```elixir
  x = 1
  1 = 1
@@ -112,7 +112,7 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
 ```
 
 <!-- slide -->
-# Pattern matching
+#  ![Elixir](elixir.png) Pattern matching
 ```elixir
  defmodule Fibonacci do
    def fib(0), do: 0
@@ -122,7 +122,7 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
 
 ```
 <!-- slide -->
-# Processes
+#  ![Elixir](elixir.png) Processes
 ### Not os-thread
 ```elixir
   spawn fn ->
@@ -131,7 +131,7 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
 ```
 
 <!-- slide -->
-# Processes
+#  ![Elixir](elixir.png) Processes
 ### lightweight
 ```elixir
     for _ <- 1..100_000 do
@@ -139,11 +139,11 @@ Hello.priv() #** (UndefinedFunctionError) function Hello.priv/0 is undefined or 
     end
 ```
 <!-- slide -->
-# Processes
+#  ![Elixir](elixir.png) Processes
 ### isolation
-per process GC, heap, stack,
+per process GC, heap, stack
 <!-- slide -->
-# Processes
+#  ![Elixir](elixir.png) Processes
 ### message passing
 ```elixir
  pid = spawn(fn ->
@@ -157,7 +157,7 @@ send(pid, "hello")
 ```
 
 <!-- slide -->
-# Actors
+# ![Elixir](elixir.png) Actors
 ```elixir
   defmodule MyActor do
     def loop(state) do
@@ -176,18 +176,69 @@ send(pid, "hello")
 ```
 
 <!-- slide -->
-# Agent and GenServer
-  - genserver demo
+#  ![Elixir](elixir.png) Task
+Conveniences for spawning and awaiting tasks.
+```elixir
+task = Task.async(fn -> do_some_work() end)
+res = Task.await(task)
+```
 
 <!-- slide -->
-# Macros
+# Agent
+Simple wrappers around state
+```elixir
+{:ok, agent} = Agent.start(fn -> 0 end)
+# {:ok, #PID<0.70.0>}
+Agent.update(agent, &(&1+2))
+# :ok
+Agent.get(agent, &(&1))
+# 2
+```
 
 <!-- slide -->
-# OTP
-  - patterns på topp av erlang.
+#  ![Elixir](elixir.png) GenServer
+```elixir
+ genserver.ex
+```
 
 <!-- slide -->
-# Hot code swap
+#  ![Elixir](elixir.png) Macros
+```elixir
+2 + 4 # {:+, 1, [2,4]}
+
+defmacro unless(expr, opts) do
+  quote do
+    if(!unquote(expr), unquote(opts))
+  end
+end
+
+unless true do
+  ...
+end
+```
+<!-- slide -->
+# ![Elixir](elixir.png)  Protocols
+```elixir
+defprotocol JSON do
+  def to_json(item)
+end
+
+defimpl JSON, for: number do
+  ...
+end
+
+JSON.to_json(item)
+
+```
+
+<!-- slide -->
+#  ![Elixir](elixir.png) Databaser
+- ETS
+- DETS
+- Mnesia
+
+<!-- slide -->
+#  ![Elixir](elixir.png) Hot code swap
  ```elixir
  defmodule Blabber do
    def start do
@@ -207,20 +258,28 @@ send(pid, "hello")
  ```
 >c("blabber.ex")
 >pid = Blabber.start
- <!-- slide -->
- # Interop
+
+<!-- slide -->
+# ![Elixir](elixir.png)  Interop
 ```elixir
+# Erlang crypto algorithm
 :crypto.hash(:sha256, "hash this")
+# Shell command
+System.cmd("whoami",[])
 ```
  <!-- slide -->
- # Tooling
+#  ![Elixir](elixir.png) Tooling
  - Iex
  - Mix
  - Hex
  - ExUnit
-
+ - dialyzer/dialyxir
 
  <!-- slide -->
- # Phoenix og Ecto
-   - web development
+ #  ![Elixir](elixir.png) Phoenix og Ecto
+   - web-rammeverk
    - orm med linq support
+
+ <!-- slide -->
+ # ![Elixir](elixir.png)  Spørsmål?
+ ### https://github.com/gautema/elixir_pres
