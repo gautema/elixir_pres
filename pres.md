@@ -12,15 +12,15 @@
 >The term Erlang is used interchangeably with Erlang/OTP, or OTP, which consists of the Erlang runtime system, a number of ready-to-use components mainly written in Erlang, and a set of design principles for Erlang programs.
 <!-- slide -->
 # ![Erlang](erlang.png)
-- Erlang - språk
+- Erlang - Språk
 - OTP - Sett med biblioteker og design patterns
 - BEAM - Erlang Virtual Machine
 <!-- slide -->
 # ![Erlang](erlang.png)
-  - laget av Ericsson i 1986, open source 1998
+  - Laget av Ericsson i 1986, open source 1998
   - Kjører på halvparten av alle mobilswitcher i verden.
-  - brukes av facebook, amazon, heroku, riak, whatsapp
-  - whatsapp har 2 millioner devices koblet til hver server
+  - Brukes av Facebook, Amazon, Heroku, Riak, Whatsapp
+  - Whatsapp har 2 millioner devices koblet til hver server
 
 <!-- slide -->
 # ![Erlang](erlang.png)
@@ -36,7 +36,7 @@
 
 <!-- slide -->
 # ![Elixir](logo.png)
-  - tre mål med elixir: compability, productivity, extensibility
+  - Tre mål med elixir: compability, productivity, extensibility
    http://elixir-lang.org/blog/2013/08/08/elixir-design-goals/
 
 <!-- slide -->
