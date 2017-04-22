@@ -28,6 +28,7 @@
   Ekstremt stabilt
   Skalerer godt horisontalt
   Tåler en stor mengde long running connections
+  Hot upgrade
   Soft realtime
 \-
  Merkelig syntaks
@@ -184,7 +185,7 @@ res = Task.await(task)
 ```
 
 <!-- slide -->
-# Agent
+# ![Elixir](elixir.png) Agent
 Simple wrappers around state
 ```elixir
 {:ok, agent} = Agent.start(fn -> 0 end)
@@ -279,6 +280,14 @@ System.cmd("whoami",[])
  #  ![Elixir](elixir.png) Phoenix og Ecto
    - web-rammeverk
    - orm med linq support
+<!-- slide -->
+#  ![Elixir](elixir.png) Hvordan begynne?
+```
+brew install elixir
+open http://elixir-lang.org/getting-started/introduction.html
+iex
+```
+
 
  <!-- slide -->
  # ![Elixir](elixir.png)  Spørsmål?
